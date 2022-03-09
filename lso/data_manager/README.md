@@ -1,6 +1,6 @@
 # DATA MANAGERS
 
-In this directory we will implement `DataManager` classes. The base interface of  `DataManager`
+In this directory we will implement `DataManager` classes. The base interface of `DataManager`
 aims at modeling the optimization trajectory w.r.t. to acquired data points. It has the following interface.
 
 - `append(self, data: Data)`: add a data from new epoch to a data manager.
