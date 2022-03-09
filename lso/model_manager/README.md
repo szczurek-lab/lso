@@ -9,6 +9,5 @@ aims at providing appropriate object for storing model trajectories collected du
 on data provided by a `data_manager:DataManager` object.
 - `encode(self, data: lso_data.Data, epoch_nb: int) -> lso_data.Latent`: get the encoding of data from a model from an 
 `epoch_nb` epoch.
-
 - `decode(self, data: lso_data.Latent, epoch_nb: int) -> lso_data.Data`: decode the latent back to the data space using
 a model from an `epoch_nb` epoch.
