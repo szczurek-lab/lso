@@ -7,7 +7,7 @@ class DataManager(ABC):
         raise NotImplementedError
 
     def get_initial_data(self) -> data.Data:
-        return self.get_initial_data()
+        raise NotImplementedError
 
     def get_nb_of_epochs(self) -> int:
         raise NotImplementedError
