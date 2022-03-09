@@ -7,7 +7,7 @@ The base object is `Data` that models a single dataset with entities we would li
 It is a `dataclass` with a following attributes:
 - `x` that is a collection of data points (e.g., list, `np.array`, etc.),
 - [Optional] `objective` that is a collection of the same length as `x` and models the values of an optimized objective.
-- `features` that is a collection of the same length as `x` and models additional features about the data.
+- [Optional] `features` that is a collection of the same length as `x` and models additional features about the data.
 
 It has the following methods:
 - `__len__(self)`: that outputs number of data points,
@@ -19,7 +19,7 @@ The base object is `Latent` that models an encoding of `Data` objects to the lat
 It is a `dataclass` with a following attributes:
 - `z` that is a collection of embedded data points (e.g., list, `np.array`, etc.),
 - [Optional] `objective` that is a collection of the same length as `z` and models the values of an optimized objective.
-- `features` that is a collection of the same length as `z` and models additional features about the data.
+- [Optional] `features` that is a collection of the same length as `z` and models additional features about the data.
 
 It has the following methods:
 - `__len__(self)`: that outputs number of data points,
