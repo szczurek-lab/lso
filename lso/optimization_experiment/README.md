@@ -7,6 +7,4 @@ that evaluates candidates provided by the `Optimizer`. After running the experim
 stores all the managers.
 
 ## `OptimizationExperiment`
-- `run(self, data_manager: lso_data_manager.DataManager, model_manager: lso_model_manager.ModelManager, optimizer: lso_optimizer_manager.OptimizerManager, objective_function: lso_objective_function.ObjectiveFunction) -> OptimizationExperimentResult`: run the experiment using data
-provided by `DataManager`, models provided by `ModelManager`. Get candidates using `OptimizerManager` and evalute them
-using `ObjectiveFunction`.
+- `run(self, data_manager: lso_data_manager.DataManager, model_manager: lso_model_manager.ModelManager, optimizer: lso_optimizer_manager.OptimizerManager, objective_function: lso_objective_function.ObjectiveFunction) -> OptimizationExperimentResult`: run the experiment using data provided by `DataManager`, models provided by `ModelManager`. Get candidates using `OptimizerManager` and evalute them using `ObjectiveFunction`.
