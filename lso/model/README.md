@@ -15,8 +15,8 @@ in this case we do not pass any params to `get_instance`) and other for which we
 
 ### Note on serialization
 
-We assume that a model might serialized to `JSON` so it has a method `get_config_dict`. It should be also able to be deserialized
-from JSON, so it has a `classmethod` `from_config_dict`.
+Each `Model` serializes to `JSON` with `get_config_dict` method and deserializes
+from JSON using `from_config_dict` `classmethod`.
 
 ## `ModelInstance`
 
