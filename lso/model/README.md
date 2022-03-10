@@ -13,6 +13,11 @@ we need to `get_instance` of the `Model`. We expect two ways of obtaining instan
 in this case we do not pass any params to `get_instance`) and other for which we provide previously obtained `instance_params`
 (think e.g., about model deserialization when one loads params from memory and passes them to a `Model`).
 
+### Note on serialization
+
+We assume that a model might serialized to `JSON` so it has a method `get_config_dict`. It should be also able to be deserialized
+from JSON, so it has a `classmethod` `from_config_dict`.
+
 ## `ModelInstance`
 
 `ModelInstance` is a model architecture extended with everything needed to perform computations on `Data/Latent`. It
