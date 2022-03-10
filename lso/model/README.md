@@ -1,9 +1,7 @@
 # Model, its instance. Instance and its params.
 
 As we want to model a model trajectory we need to move away from a classic track of NN model 
-development. This is because - in order to store many models, we cannot simply keep them in 
-the memory all together. Because of that we want to introduce the following ontology on the 
-NN models.
+development. This is because - in order to store many models - we cannot keep them all together in memory. Therefore, we introduce the following ontology of NN models.
 
     Model + InstanceParams -> ModelInstance
     ModelInstance + Data/Latent -> Latent/Data 
