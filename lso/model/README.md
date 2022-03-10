@@ -8,7 +8,7 @@ development. This is because - in order to store many models - we cannot keep th
 
 ## `Model`
 One may think about the `Model` as the architecture of the model (e.g., layers, shapes,
-control flow, etc.). In order to have something that we can run computations on (e.g., compute latent for data)
+control flow, etc.). In order to have something that we can run computations on (e.g., compute the latent space for the data)
 we need to `get_instance` of the `Model`. We expect two ways of obtaining instances: one for a totally new instance (
 in this case we do not pass any params to `get_instance`) and other for which we provide previously obtained `instance_params`
 (think e.g., about model deserialization when one loads params from memory and passes them to a `Model`).
