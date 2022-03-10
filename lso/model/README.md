@@ -15,7 +15,7 @@ in this case we do not pass any params to `get_instance`) and other for which we
 
 ## `ModelInstance`
 
-`ModelInstance` is a model architecture extended with everything needed to perform computations on `Data/Latent`. It can
+`ModelInstance` is a model architecture extended with everything needed to perform computations on `Data/Latent`. It
 accept `Data` and `encode`s it into `Latent` and the opposite is done by a `decode` method.
 
 
