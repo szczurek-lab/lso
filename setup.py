@@ -9,5 +9,7 @@ setup(
     author_email='mmozejko1988@gmail.com',
     url='https://github.com/szczurek-lab/lso',
     packages=find_packages(),
-    install_requires=[]
+    install_requires=[
+        'torch>=1.10.0',
+    ]
 )
