@@ -1,3 +1,4 @@
+from typing import Dict
 from typing import Optional
 
 from lso.data import data as lso_data
@@ -22,4 +23,11 @@ class ModelInstance:
 class Model:
 
     def get_instance(self, instance_params: Optional[InstanceParams] = None) -> ModelInstance:
+        raise NotImplementedError
+
+    def get_config_dict(self) -> Dict:
+        raise NotImplementedError
+
+    @classmethod
+    def from_config_dict(cls, config_dict: Dict) -> "Model":
         raise NotImplementedError
