@@ -14,13 +14,13 @@ class NumpyData(lso_data.Data):
 
     def __add__(self, other: Any) -> "NumpyData":
 
-        if not issubclass(other.x, type(self.x)):
+        if not issubclass(type(other.x), type(self.x)):
             return NotImplemented
 
-        if not issubclass(other.x, type(self.objective)):
+        if not issubclass(type(other.x), type(self.objective)):
             return NotImplemented
 
-        if not issubclass(other.features, type(self.features)):
+        if not issubclass(type(other.features), type(self.features)):
             return NotImplemented
 
         return type(self)(
@@ -38,13 +38,13 @@ class NumpyLatent(lso_data.Latent):
 
     def __add__(self, other: Any) -> "NumpyLatent":
 
-        if not issubclass(other.z, type(self.z)):
+        if not issubclass(type(other.z), type(self.z)):
             return NotImplemented
 
-        if not issubclass(other.x, type(self.objective)):
+        if not issubclass(type(other.x), type(self.objective)):
             return NotImplemented
 
-        if not issubclass(other.features, type(self.features)):
+        if not issubclass(type(other.features), type(self.features)):
             return NotImplemented
 
         return type(self)(
