@@ -32,7 +32,7 @@ class SquaresArea(lso_objective_function.ObjectiveFunction):
 
     def evaluate(self, data: lso_data.Data) -> lso_data.Data:
 
-        assert issubclass(type(data), lso_objective_function.ObjectiveFunction)
+        assert issubclass(type(data), lso_data.Data)
         assert len(data.x.shape) == 3
 
         area = area_utils.calculate_area(data.x)
