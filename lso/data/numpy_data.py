@@ -13,14 +13,15 @@ class NumpyData(lso_data.Data):
     features: Optional[np.array] = None
 
     def __add__(self, other: Any) -> "NumpyData":
-        if not isinstance(self.x, type(other.x)):
-            raise ValueError(f'cannot add {type(self.x)} to {type(other.x)}')
 
-        if not isinstance(self.objective, type(other.objective)):
-            raise ValueError(f'cannot add {type(self.objective)} to {type(other.objective)}')
+        if not issubclass(other.x, type(self.x)):
+            return NotImplemented
 
-        if not isinstance(self.features, type(other.features)):
-            raise ValueError(f'cannot add {type(self.features)} to {type(other.features)}')
+        if not issubclass(other.x, type(self.objective)):
+            return NotImplemented
+
+        if not issubclass(other.features, type(self.features)):
+            return NotImplemented
 
         return type(self)(
             x=np.concatenate((self.x, other.x)),
@@ -36,14 +37,15 @@ class NumpyLatent(lso_data.Latent):
     features: Optional[np.array] = None
 
     def __add__(self, other: Any) -> "NumpyLatent":
-        if not isinstance(self.z, type(other.z)):
-            raise ValueError(f'cannot add {type(self.x)} to {type(other.x)}')
 
-        if not isinstance(self.objective, type(other.objective)):
-            raise ValueError(f'cannot add {type(self.objective)} to {type(other.objective)}')
+        if not issubclass(other.z, type(self.z)):
+            return NotImplemented
 
-        if not isinstance(self.features, type(other.features)):
-            raise ValueError(f'cannot add {type(self.features)} to {type(other.features)}')
+        if not issubclass(other.x, type(self.objective)):
+            return NotImplemented
+
+        if not issubclass(other.features, type(self.features)):
+            return NotImplemented
 
         return type(self)(
             z=np.concatenate((self.z, other.z)),
