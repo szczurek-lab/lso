@@ -6,6 +6,7 @@ from typing import Optional
 from lso.data import data as lso_data
 
 
+# noinspection PyDataclass
 @dataclass
 class NumpyData(lso_data.Data):
     x: np.array
@@ -17,19 +18,27 @@ class NumpyData(lso_data.Data):
         if not issubclass(type(other.x), type(self.x)):
             return NotImplemented
 
-        if not issubclass(type(other.x), type(self.objective)):
+        if not issubclass(type(other.objective), type(self.objective)):
             return NotImplemented
 
         if not issubclass(type(other.features), type(self.features)):
             return NotImplemented
 
-        return type(self)(
-            x=np.concatenate((self.x, other.x)),
-            objective=np.concatenate((self.objective, other.objective)),
-            features=np.concatenate((self.features, other.features))
-        )
+        x = np.concatenate((self.x, other.x))
 
+        if self.objective is None:
+            objective = None
+        else:
+            objective = np.concatenate((self.objective, other.objective))
 
+        if self.features is None:
+            features = None
+        else:
+            features = np.concatenate((self.features, other.features))
+
+        return type(self)(x=x, objective=objective, features=features)
+
+# noinspection PyDataclass
 @dataclass
 class NumpyLatent(lso_data.Latent):
     z: np.array
@@ -41,14 +50,23 @@ class NumpyLatent(lso_data.Latent):
         if not issubclass(type(other.z), type(self.z)):
             return NotImplemented
 
-        if not issubclass(type(other.x), type(self.objective)):
+        if not issubclass(type(other.objective), type(self.objective)):
             return NotImplemented
 
         if not issubclass(type(other.features), type(self.features)):
             return NotImplemented
 
-        return type(self)(
-            z=np.concatenate((self.z, other.z)),
-            objective=np.concatenate((self.objective, other.objective)),
-            features=np.concatenate((self.features, other.features))
-        )
+        z = np.concatenate((self.z, other.z))
+
+        if self.objective is None:
+            objective = None
+        else:
+            objective = np.concatenate((self.objective, other.objective))
+
+        if self.features is None:
+            features = None
+        else:
+            features = np.concatenate((self.features, other.features))
+
+        return type(self)(z=z, objective=objective, features=features)
+    
