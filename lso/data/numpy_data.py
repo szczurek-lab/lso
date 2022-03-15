@@ -6,7 +6,6 @@ from typing import Optional
 from lso.data import data as lso_data
 
 
-# noinspection PyDataclass
 @dataclass
 class NumpyData(lso_data.Data):
     x: np.array
@@ -15,30 +14,33 @@ class NumpyData(lso_data.Data):
 
     def __add__(self, other: Any) -> "NumpyData":
 
-        if not issubclass(type(other.x), type(self.x)):
+        if not isinstance(other, NumpyData):
             return NotImplemented
 
-        if not issubclass(type(other.objective), type(self.objective)):
-            return NotImplemented
-
-        if not issubclass(type(other.features), type(self.features)):
-            return NotImplemented
-
+        if not self.x.shape[1:] == other.x.shape[1:]:
+            raise ValueError(f'x shapes of added Data: {self}, {other}'
+                             f' do not match: {self.x.shape}, {other.x.shape}.')
         x = np.concatenate((self.x, other.x))
 
-        if self.objective is None:
+        if self.objective is None or other.objective is None:
             objective = None
         else:
+            if not self.objective.shape[1:] == other.objective.shape[1:]:
+                raise ValueError(f'objective shapes of added Data: {self}, {other}'
+                                 f' do not match: {self.objective.shape}, {other.objective.shape}.')
             objective = np.concatenate((self.objective, other.objective))
 
-        if self.features is None:
+        if self.features is None or other.features is None:
             features = None
         else:
+            if not self.features.shape[1:] == other.features.shape[1:]:
+                raise ValueError(f'features shapes of added Data: {self}, {other}'
+                                 f' do not match: {self.features.shape}, {other.features.shape}.')
             features = np.concatenate((self.features, other.features))
 
         return type(self)(x=x, objective=objective, features=features)
 
-# noinspection PyDataclass
+
 @dataclass
 class NumpyLatent(lso_data.Latent):
     z: np.array
@@ -47,25 +49,28 @@ class NumpyLatent(lso_data.Latent):
 
     def __add__(self, other: Any) -> "NumpyLatent":
 
-        if not issubclass(type(other.z), type(self.z)):
+        if not isinstance(other, NumpyLatent):
             return NotImplemented
 
-        if not issubclass(type(other.objective), type(self.objective)):
-            return NotImplemented
-
-        if not issubclass(type(other.features), type(self.features)):
-            return NotImplemented
-
+        if not self.z.shape[1:] == other.z.shape[1:]:
+            raise ValueError(f'Z shapes of added latents: {self}, {other}'
+                             f' do not match: {self.z.shape}, {other.z.shape}.')
         z = np.concatenate((self.z, other.z))
 
-        if self.objective is None:
+        if self.objective is None or other.objective is None:
             objective = None
         else:
+            if not self.objective.shape[1:] == other.objective.shape[1:]:
+                raise ValueError(f'objective shapes of added latents: {self}, {other}'
+                                 f' do not match: {self.objective.shape}, {other.objective.shape}.')
             objective = np.concatenate((self.objective, other.objective))
 
-        if self.features is None:
+        if self.features is None or other.features is None:
             features = None
         else:
+            if not self.features.shape[1:] == other.features.shape[1:]:
+                raise ValueError(f'features shapes of added latents: {self}, {other}'
+                                 f' do not match: {self.features.shape}, {other.features.shape}.')
             features = np.concatenate((self.features, other.features))
 
         return type(self)(z=z, objective=objective, features=features)
