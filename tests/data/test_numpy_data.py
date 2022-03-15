@@ -299,3 +299,49 @@ def test__numpy_latent__raises_when_objective_shapes_wrong():
     with pytest.raises(ValueError):
         left + right
         right + left
+
+
+def test__numpy_latent__subclass_proper_when_adding():
+    left_size = 10
+    right_size = 10
+    z_shape = 15
+    features_shape = 11
+    objective_shape = 11
+
+    class DummyNumpyLatent(lso_np_data.NumpyLatent):
+        pass
+
+    left = DummyNumpyLatent(
+        z=np.random.normal(size=(left_size, z_shape)),
+        objective=np.random.normal(size=(left_size, objective_shape)),
+        features=np.random.normal(size=(left_size, features_shape)),
+    )
+    right = lso_np_data.NumpyLatent(
+        z=np.random.normal(size=(right_size, z_shape)),
+        objective=np.random.normal(size=(right_size, objective_shape)),
+        features=np.random.normal(size=(right_size, features_shape)),
+    )
+    assert isinstance(left + right, DummyNumpyLatent)
+
+
+def test__numpy_data__subclass_proper_when_adding():
+    left_size = 10
+    right_size = 10
+    x_shape = 15
+    features_shape = 11
+    objective_shape = 11
+
+    class DummyNumpyData(lso_np_data.NumpyData):
+        pass
+
+    left = DummyNumpyData(
+        x=np.random.normal(size=(left_size, x_shape)),
+        objective=np.random.normal(size=(left_size, objective_shape)),
+        features=np.random.normal(size=(left_size, features_shape)),
+    )
+    right = DummyNumpyData(
+        x=np.random.normal(size=(right_size, x_shape)),
+        objective=np.random.normal(size=(right_size, objective_shape)),
+        features=np.random.normal(size=(right_size, features_shape)),
+    )
+    assert isinstance(left + right, DummyNumpyData)
