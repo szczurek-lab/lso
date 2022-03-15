@@ -11,5 +11,6 @@ setup(
     packages=find_packages(),
     install_requires=[
         'torch>=1.10.0',
+        'pytest~=7.1.0',
     ]
 )
