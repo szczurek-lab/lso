@@ -19,9 +19,9 @@ class PenalizedJaccardShapeArea(lso_objective_function.ObjectiveFunction):
         area_circumscribed_x = utils.calculate_circumscribed_square_area(x)
 
         jaccard_index = area_x / area_circumscribed_x
-        shape_likeliness = 1 - jaccard_index
+        jaccard_distance = 1 - jaccard_index
 
-        return shape_likeliness
+        return jaccard_distance
 
     def evaluate(self, data: lso_data.Data) -> lso_data.Data:
 
