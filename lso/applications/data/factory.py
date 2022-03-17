@@ -2,6 +2,7 @@ from torchvision.datasets import mnist
 import numpy as np
 
 from lso.applications.data import mnist as app_mnist
+from lso.applications.objectives import mnist as lso_app_obj_mnist
 
 
 class DataFactory:
@@ -19,13 +20,13 @@ class DataFactory:
 
         x = mnist_data.test_data.numpy() / 255.0
         labels = mnist_data.train_labels.numpy()
-        objective = x.sum(axis=(1, 2))
 
-        return app_mnist.MNISTNumpyData(
+        raw_data = app_mnist.MNISTNumpyData(
             x=x.astype(np.float32),
-            objective=objective.astype(np.float32),
             features=labels.astype(np.float32),
         )
+
+        return lso_app_obj_mnist.MNISTSumObjectiveFunction().evaluate(raw_data)
 
 
 class VectorizerFactory:
