@@ -10,7 +10,10 @@ setup(
     url='https://github.com/szczurek-lab/lso',
     packages=find_packages(),
     install_requires=[
+        'keras~=2.8.0',
         'torch>=1.10.0',
         'pytest~=7.1.0',
+        'pytorch-lightning~=1.5.10',
+        'torchvision~=0.11.1',
     ]
 )
