@@ -2,6 +2,7 @@ from typing import Dict
 from typing import Optional
 
 from lso.data import data as lso_data
+from lso.data import numpy_data as lso_np_data
 
 
 class InstanceParams:
@@ -13,10 +14,10 @@ class ModelInstance:
     def get_params(self):
         raise NotImplementedError
 
-    def encode(self, data: lso_data.Data) -> lso_data.Latent:
+    def encode(self, data: lso_np_data.NumpyData) -> lso_data.Latent:
         raise NotImplementedError
 
-    def decode(self, latent: lso_data.Latent) -> lso_data.Data:
+    def decode(self, latent: lso_data.Latent) -> lso_np_data.NumpyData:
         raise NotImplementedError
 
 
