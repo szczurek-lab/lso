@@ -3,11 +3,13 @@ from dataclasses import dataclass
 from typing import Any
 from typing import Optional
 
+from torch.utils import data as torch_data
+
 from lso.data import data as lso_data
 
 
 @dataclass
-class NumpyData(lso_data.Data):
+class NumpyData(lso_data.Data, torch_data.Dataset):
     x: np.array
     objective: Optional[np.array] = None
     features: Optional[np.array] = None
@@ -42,7 +44,7 @@ class NumpyData(lso_data.Data):
 
 
 @dataclass
-class NumpyLatent(lso_data.Latent):
+class NumpyLatent(lso_data.Latent, torch_data.Dataset):
     z: np.array
     objective: Optional[np.array] = None
     features: Optional[np.array] = None
