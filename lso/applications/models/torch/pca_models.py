@@ -2,7 +2,6 @@ from typing import Dict
 from typing import Optional
 
 from torch import nn
-from torch.nn import functional as F
 import torch
 from pytorch_lightning.utilities import types as pl_u_types
 
@@ -78,7 +77,7 @@ class SimplePCATorchModelInstance(lso_tm.PytorchModelInstance):
         z = enc_dist.rsample()
         logits = self.decoder(z)
         x_hat = torch.round(torch.sigmoid(logits))
-        loss = F.mse_loss(x_hat, batch)
+        loss = nn.BCELoss()(x_hat, batch)
         self.log('train_loss', loss)
         return loss
 
