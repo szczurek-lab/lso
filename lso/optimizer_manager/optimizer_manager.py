@@ -15,3 +15,6 @@ class OptimizerManager(ABC):
         nb_of_candidates: int
     ) -> lso_data.Data:
         raise NotImplementedError
+
+    def get_config_dict(self):
+        raise NotImplementedError
