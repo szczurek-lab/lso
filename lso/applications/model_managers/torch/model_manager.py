@@ -43,7 +43,6 @@ class BasicPLSingleModelModelManager(lso_model_manager.SingleModelModelManager):
     def get_config_dict(self) -> Dict:
         return {
             'batch_size': self.batch_size,
-            'nb_of_step_epochs': self.nb_of_step_epochs,
+            'nb_of_steps_per_epoch': self.nb_of_step_epochs,
             'nb_of_initial_epochs': self.nb_of_initial_epochs,
-            'vectorizer': self.vectorizer.get_config_dict(),
         }
