@@ -12,11 +12,13 @@ class OptimizationExperimentResult:
             self,
             data_manager: lso_data_manager.DataManager,
             model_manager: lso_model_manager.ModelManager,
-            optimizer_manager: lso_optimizer_manager.OptimizerManager
+            optimizer_manager: lso_optimizer_manager.OptimizerManager,
+            objective_function: lso_objective_function.ObjectiveFunction
     ):
         self.data_manager = data_manager
         self.model_manager = model_manager
         self.optimizer_manager = optimizer_manager
+        self.objective_function = objective_function
 
 
 class OptimizationExperiment(ABC):
