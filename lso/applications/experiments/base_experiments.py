@@ -16,6 +16,7 @@ class BaseOptimizationExperimentResult(lso_oe.OptimizationExperimentResult):
             model_manager: lso_model_manager.ModelManager,
             data_manager: lso_data_manager.DataManager,
             optimizer_manager: lso_optimizer_manager.OptimizerManager,
+            objective_function: lso_objective_function.ObjectiveFunction,
             nb_of_epochs: int,
             nb_of_candidates_per_epoch: int
     ):
@@ -23,9 +24,16 @@ class BaseOptimizationExperimentResult(lso_oe.OptimizationExperimentResult):
             model_manager=model_manager,
             data_manager=data_manager,
             optimizer_manager=optimizer_manager,
+            objective_function=objective_function,
         )
         self.nb_of_epochs = nb_of_epochs
         self.nb_of_candidates_per_epoch = nb_of_candidates_per_epoch
+
+    def get_config_dict(self) -> Dict:
+        return {
+            "nb_of_epochs": self.nb_of_epochs,
+            "nb_of_candidates_per_epoch": self.nb_of_candidates_per_epoch,
+        }
 
 
 class BaseOptimizationExperiment(lso_oe.OptimizationExperiment):
@@ -55,6 +63,7 @@ class BaseOptimizationExperiment(lso_oe.OptimizationExperiment):
             data_manager=data_manager,
             model_manager=model_manager,
             optimizer_manager=optimizer_manager,
+            objective_function=objective_function,
             nb_of_epochs=self.nb_of_epochs,
             nb_of_candidates_per_epoch=self.nb_of_candidates_per_epoch
         )
